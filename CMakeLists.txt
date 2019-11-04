@@ -3,4 +3,10 @@ project(code_cpp)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(code_cpp class4/05_CommonPartInOrderedLinkedList.cpp)
+# 头文件目录
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/utils)
+
+# 源文件目录
+aux_source_directory(utils DIR_SRCS)
+
+add_executable(code_cpp ${DIR_SRCS} class4/09_HasCircle.cpp)

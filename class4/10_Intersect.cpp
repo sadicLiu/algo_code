@@ -2,7 +2,10 @@
 
 using namespace std;
 
-int main() {
+// 两个链表是否相交
+
+int main()
+{
 
 
     return 0;
