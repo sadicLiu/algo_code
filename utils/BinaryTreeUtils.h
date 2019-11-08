@@ -1,14 +1,16 @@
 #ifndef CODE_CPP_BINARYTREEUTILS_H
 #define CODE_CPP_BINARYTREEUTILS_H
 
-struct Node
-{
+#include <iostream>
+
+using namespace std;
+
+struct Node {
     int value;
     Node *left;
     Node *right;
 
-    Node(int value)
-    {
+    Node(int value) {
         this->value = value;
         left = nullptr;
         right = nullptr;
