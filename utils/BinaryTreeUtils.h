@@ -12,8 +12,8 @@ struct Node {
 
     Node(int value) {
         this->value = value;
-        left = nullptr;
-        right = nullptr;
+        this->left = nullptr;
+        this->right = nullptr;
     }
 };
 
