@@ -17,6 +17,22 @@ struct Node {
     }
 };
 
+struct NodeWithParent
+{
+    int value;
+    NodeWithParent *parent;
+    NodeWithParent *left;
+    NodeWithParent *right;
+
+    NodeWithParent(int value)
+    {
+        this->value = value;
+        this->parent = NULL;
+        this->left = NULL;
+        this->right = NULL;
+    }
+};
+
 void printTree(Node *root);
 
 #endif //CODE_CPP_BINARYTREEUTILS_H
