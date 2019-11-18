@@ -9,4 +9,4 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/utils)
 # 源文件目录
 aux_source_directory(utils DIR_SRCS)
 
-add_executable(code_cpp ${DIR_SRCS} class7/04_ConcatString.cpp)
+add_executable(code_cpp ${DIR_SRCS} utils/PriorityQueue.cpp)
