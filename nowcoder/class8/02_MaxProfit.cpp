@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <queue>
 
 using namespace std;
 
@@ -27,44 +28,78 @@ struct CostComparator
 {
     bool operator()(Project a, Project b)
     {
-        return a.cost > b.cost;
+        return a.cost > b.cost;  // 根据项目的cost组建小顶堆
     }
 };
 
-int maxProfit(Project *projects, int projectNum, int m, int k)
+struct ProfitComparator
 {
-    for (int i = 0; i < projectNum; ++i)
+    bool operator()(Project a, Project b)
     {
-        cout << projects[i].cost << ": " << projects[i].profit << endl;
+        return a.profit < b.profit;  // 根据项目的利润组建大顶堆
     }
+};
 
-    return 1;
+template<typename T>
+void printQueue(T &q)
+{
+    cout << "cost: ";
+    while (!q.empty())
+    {
+        std::cout << q.top().cost << " ";
+        q.pop();
+    }
+    std::cout << '\n';
 }
 
-void sortV(vector<Project> &proj)
+int maxProfit(vector<Project> projects, int m, int k)
 {
-    for (int i = 0; i < proj.size(); ++i)
+    priority_queue<Project, vector<Project>, CostComparator> costs;  // 所有项目按cost组成小顶堆
+    priority_queue<Project, vector<Project>, ProfitComparator> profits;  // 所有项目按profit组成大顶堆
+
+    for (auto p : projects)
+        costs.push(p);
+
+    int currentMoney = m;
+    while (k > 0)
     {
-        cout << proj[i].cost << endl;
+        while (!costs.empty() && costs.top().cost <= currentMoney)
+        {
+            profits.push(costs.top());
+            costs.pop();
+        }
+
+        if (profits.empty())
+            return currentMoney;
+
+        Project currentProj = profits.top();
+        profits.pop();
+        currentMoney += currentProj.profit;
+        k--;
     }
 
-    make_heap(proj.begin(), proj.begin(), CostComparator());
-
-    for (int i = 0; i < proj.size(); ++i)
-    {
-        cout << proj[i].cost << endl;
-    }
+    return currentMoney;
 }
+
 
 int main()
 {
-    vector<Project> projects = {Project(100, 10), Project(50, 5), Project(70, 10), Project(200, 30)};
+    vector<Project> projects =
+            {Project(100, 10),
+             Project(50, 5),
+             Project(70, 10),
+             Project(200, 30)};
     int m = 100;
     int k = 4;
+    cout << maxProfit(projects, m, k) << endl;  // 125
 
-//    cout << maxProfit(projects, 4, m, k) << endl;  // 125
-    sortV(projects);
-//    sort(projects.begin(), projects.end(), CostComparator());
+    m = 200;
+    k = 1;
+    cout << maxProfit(projects, m, k) << endl;  // 230
+
+    m = 100;
+    k = 2;
+    cout << maxProfit(projects, m, k) << endl;  // 120
 
     return 0;
 }
