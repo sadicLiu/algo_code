@@ -16,12 +16,14 @@ void print_queue(T &q)
 
 int main()
 {
-    std::priority_queue<int> q;  // 默认是大根堆
+    // notes: 默认比较函数为less (operator是小于号<), 大顶堆
+    std::priority_queue<int> q;
     for (int n : {1, 8, 5, 6, 3, 4, 0, 9, 7, 2})
         q.push(n);
 
     print_queue(q);
 
+    // notes: 使用比较函数greater (operator是大于号>), 小顶堆
     std::priority_queue<int, std::vector<int>, std::greater<int> > q2;
     for (int n : {1, 8, 5, 6, 3, 4, 0, 9, 7, 2})
         q2.push(n);
