@@ -3,6 +3,12 @@
 
 using namespace std;
 
+/*
+ * 优先级队列使用的comparator与sort()函数里用的是相反的
+ * 正常情况下, return a < b 会生成从小到大的序列, 也就是sort()函数的用法
+ * 而优先级队列中, 这种情况会使大的元素在前面, 也就是生成大根堆
+ * */
+
 struct Node
 {
     int cost;
@@ -52,7 +58,7 @@ int main()
     q.push(Node(70, 5));
     q.push(Node(200, 30));
 
-//    printQueue(q);
+    printQueue(q);
 
     priority_queue<Node, vector<Node>, greater<Node>> q2;
     q2.push(Node(100, 10));
