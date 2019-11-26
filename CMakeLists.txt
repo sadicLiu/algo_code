@@ -9,4 +9,4 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/utils)
 # 源文件目录
 aux_source_directory(utils DIR_SRCS)
 
-add_executable(code_cpp ${DIR_SRCS} nowcoder/class8/04_Project.cpp)
+add_executable(code_cpp ${DIR_SRCS} api/new.cpp)
