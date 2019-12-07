@@ -22,7 +22,7 @@ public:
         for (int i = 0; i < nodes.size(); ++i)
         {
             parentMap[nodes[i]] = nodes[i];
-            sizeMap[nodes[i]] = i;
+            sizeMap[nodes[i]] = 1;
         }
     }
 
