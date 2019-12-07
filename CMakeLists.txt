@@ -9,4 +9,4 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/utils)
 # 源文件目录
 aux_source_directory(utils DIR_SRCS)
 
-add_executable(code_cpp ${DIR_SRCS} nowcoder/class2/02_QuickSort.cpp)
+add_executable(code_cpp ${DIR_SRCS}  nc/class2/ nc/class2/02_589.cpp)
