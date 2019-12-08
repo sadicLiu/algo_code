@@ -4,20 +4,22 @@
 
 using namespace std;
 
-class UnionFindSet
+class ConnectingGraph3
 {
-private:
-    map<int, int> parents;
-    map<int, int> sizes;
-
 public:
-    UnionFindSet(vector<int> &nodes)
+    /**
+     * @param a: An integer
+     * @param b: An integer
+     * @return: nothing
+     */
+    ConnectingGraph3(int n)
     {
-        for (int i = 0; i < nodes.size(); ++i)
+        // initialize your data structure here.
+        for (int i = 1; i <= n; ++i)
         {
-            int cur = nodes[i];
-            parents[cur] = cur;
-            sizes[cur] = 1;
+            parents[i] = i;
+            sizes[i] = 1;
+            count = n;
         }
     }
 
@@ -26,6 +28,7 @@ public:
         int cur = node;
         int parent = parents[cur];
         vector<int> nodes;
+
         while (cur != parent)
         {
             nodes.push_back(cur);
@@ -34,15 +37,15 @@ public:
         }
         for (int i = 0; i < nodes.size(); ++i)
         {
-            cur = nodes[i];
             parents[cur] = parent;
         }
 
         return parent;
     }
 
-    void merge(int a, int b)
+    void connect(int a, int b)
     {
+        // write your code here
         int headA = findHead(a);
         int headB = findHead(b);
         if (headA == headB)
@@ -59,24 +62,21 @@ public:
             parents[headA] = headB;
             sizes[headB] += sizes[headA];
         }
+
+        count--;
     }
 
-    bool isSameSet(int a, int b)
+    /**
+     * @return: An integer
+     */
+    int query()
     {
-        return findHead(a) == findHead(b);
+        // write your code here
+        return count;
     }
+
+private:
+    map<int, int> parents;
+    map<int, int> sizes;
+    int count;
 };
-
-
-int main()
-{
-    vector<int> nodes{1, 2, 3, 4, 5};
-    UnionFindSet findSet(nodes);
-
-    cout << findSet.isSameSet(1, 2) << endl;
-
-    findSet.merge(1, 2);
-    cout << findSet.isSameSet(1, 2) << endl;
-
-    return 0;
-}

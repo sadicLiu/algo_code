@@ -61,22 +61,33 @@ public:
         }
     }
 
-    bool isSameSet(int a, int b)
+    void connect(int a, int b)
     {
-        return findHead(a) == findHead(b);
+        merge(a, b);
+    }
+
+    int query(int a)
+    {
+        int head = findHead(a);
+        return sizes[head];
     }
 };
-
 
 int main()
 {
     vector<int> nodes{1, 2, 3, 4, 5};
     UnionFindSet findSet(nodes);
 
-    cout << findSet.isSameSet(1, 2) << endl;
+    cout << findSet.query(1) << endl;
 
-    findSet.merge(1, 2);
-    cout << findSet.isSameSet(1, 2) << endl;
+    findSet.connect(1, 2);
+    cout << findSet.query(1) << endl;
+
+    findSet.connect(2, 4);
+    cout << findSet.query(1) << endl;
+
+    findSet.connect(1, 4);
+    cout << findSet.query(1) << endl;
 
     return 0;
 }
