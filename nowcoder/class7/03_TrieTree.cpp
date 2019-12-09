@@ -41,12 +41,10 @@ public:
         if (word.length() == 0)
             return;
 
-        char *ch = const_cast<char *>(word.data());
-        int index;
         TrieNode *cur = root;
         for (int i = 0; i < word.length(); ++i)
         {
-            index = ch[i] - 'a';
+            int index = word.at(i) - 'a';
             if (cur->nexts[index] == nullptr)
                 cur->nexts[index] = new TrieNode();
             cur = cur->nexts[index];
@@ -80,18 +78,16 @@ public:
             return;
 
         vector<TrieNode *> toBeDel;
-        char *p = (char *) word.data();
         TrieNode *cur = root;
         TrieNode *pre;
         for (int i = 0; i < word.length(); ++i)
         {
-            int index = p[i] - 'a';
+            int index = word.at(i) - 'a';
             cur->nexts[index]->freq--;
             if (cur->nexts[index]->freq == 0)
                 toBeDel.push_back(cur->nexts[index]);
 
             if (toBeDel.size() == 1)
-            {
                 pre = cur;
                 cur = cur->nexts[index];
                 pre->nexts[index] = nullptr;
