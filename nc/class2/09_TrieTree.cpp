@@ -9,7 +9,6 @@ struct TrieNode
     int freq;
     int end;
     TrieNode *next[26];
-    int arr[10];
 
     TrieNode()
     {
