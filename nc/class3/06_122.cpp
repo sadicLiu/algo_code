@@ -17,11 +17,8 @@ public:
         for (int i = 0; i < height.size(); i++)
         {
             int curHeight = height[i];
-            if (!myStack.empty() && curHeight < height[myStack.top()])
-            {
-                while (!myStack.empty() && curHeight < height[myStack.top()])
-                    update(res, myStack, height, i);
-            }
+            while (!myStack.empty() && curHeight < height[myStack.top()])
+                update(res, myStack, height, i);
 
             myStack.push(i);
         }
