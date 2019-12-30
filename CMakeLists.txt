@@ -9,4 +9,4 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/utils)
 # 源文件目录
 aux_source_directory(utils DIR_SRCS)
 
-add_executable(code_cpp ${DIR_SRCS} nc/class3/08_654_leetcode.cpp)
+add_executable(code_cpp ${DIR_SRCS} nc/class4/01_75.cpp)
