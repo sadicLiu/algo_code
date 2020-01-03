@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(code_cpp)
+project(algorithm)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -10,4 +10,4 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/utils)
 aux_source_directory(utils DIR_SRCS)
 aux_source_directory(nc/class4 CURRENT)
 
-add_executable(code_cpp ${DIR_SRCS} ${CURRENT})
+add_executable(run ${DIR_SRCS} ${CURRENT})
