@@ -10,4 +10,4 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/utils)
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/utils DIR_SRCS)
 aux_source_directory(nc/class4 CURRENT)
 
-add_executable(run ${DIR_SRCS} ${CURRENT} nc/BFPRT.cpp)
+add_executable(run ${DIR_SRCS} ${CURRENT} nc/lintcode_5_kth_largest_number.cpp)
