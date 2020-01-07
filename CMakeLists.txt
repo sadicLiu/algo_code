@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 11)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/utils)
 
 # 源文件目录
-aux_source_directory(utils DIR_SRCS)
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/utils DIR_SRCS)
 aux_source_directory(nc/class4 CURRENT)
 
-add_executable(run ${DIR_SRCS} ${CURRENT})
+add_executable(run ${DIR_SRCS} ${CURRENT} nc/BFPRT.cpp)
