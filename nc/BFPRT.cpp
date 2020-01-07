@@ -14,14 +14,11 @@ using namespace std;
 class Solution
 {
 public:
+    // 在begin到end范围上求第k小的数
     int bfprt(vector<int> &nums, int begin, int end, int k)
     {
+        // 求中位数数组的中位数时, 会一直递归下去, 直到中位数数组中只有一个元素, 这时返回这个元素
         if (begin == end) return nums[begin];
-//        if ((end - begin + 1) < 5)
-//        {
-//            sort(nums.begin() + begin, nums.begin() + end + 1);
-//            return nums[begin + k];
-//        }
 
         int pivot = medianOfMedians(nums, begin, end);
         int pivotRange[2] = {-1, -1};
@@ -34,7 +31,7 @@ public:
             return bfprt(nums, pivotRange[1] + 1, end, k);
     }
 
-    // 5个数分成一组，组内排序，拿出每组的中位数组成新数组，返回新数组的中位数
+    // 每5个数分成一组，组内排序，拿出每组的中位数组成新数组，返回新数组的中位数
     int medianOfMedians(vector<int> &nums, int begin, int end)
     {
         int num = end - begin + 1;
